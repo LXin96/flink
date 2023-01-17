@@ -51,7 +51,7 @@ public final class StreamGraphUtils {
 
     /**
      * Configure a stream node's buffer timeout according to the given transformation.
-     *
+     * TODO 根据给定的转换配置一个流节点的buffer的超时时间
      * @param streamGraph The StreamGraph the node belongs to
      * @param nodeId The node's id
      * @param transformation A given transformation

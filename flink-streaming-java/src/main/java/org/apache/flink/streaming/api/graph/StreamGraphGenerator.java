@@ -223,6 +223,7 @@ public class StreamGraphGenerator {
 
     // Keep track of which Transforms we have already transformed, this is necessary because
     // we have loops, i.e. feedback edges.
+    // TODO 跟踪我们已经转换了那些变换，这是必要的，因为我们有循环以及反馈边等
     private Map<Transformation<?>, Collection<Integer>> alreadyTransformed;
 
     public StreamGraphGenerator(
@@ -504,6 +505,8 @@ public class StreamGraphGenerator {
      *
      * <p>This checks whether we already transformed it and exits early in that case. If not it
      * delegates to one of the transformation specific methods.
+     *
+     * 这个方法会检查是否已经转换了这个transformation，如果没有，它将委托给指定的转换方法
      */
     private Collection<Integer> transform(Transformation<?> transform) {
         if (alreadyTransformed.containsKey(transform)) {
@@ -514,8 +517,10 @@ public class StreamGraphGenerator {
 
         if (transform.getMaxParallelism() <= 0) {
 
-            // if the max parallelism hasn't been set, then first use the job wide max parallelism
+            // if the max parallelism hasn't been set,   then first use the job wide max parallelism
             // from the ExecutionConfig.
+            //TODO maxParallelism 这个值用于未指定最大并行度的算子的最大并行度，最大并行度指定动态伸缩的上限和
+            //TODO 用于分区状态的键组数量，当从原始作业恢复时显式更改最大并行度将导致状态不兼容
             int globalMaxParallelismFromConfig = executionConfig.getMaxParallelism();
             if (globalMaxParallelismFromConfig > 0) {
                 transform.setMaxParallelism(globalMaxParallelismFromConfig);

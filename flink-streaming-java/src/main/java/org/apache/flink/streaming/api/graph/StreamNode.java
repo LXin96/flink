@@ -49,7 +49,9 @@ import java.util.Set;
 import static org.apache.flink.util.Preconditions.checkArgument;
 import static org.apache.flink.util.Preconditions.checkState;
 
-/** Class representing the operators in the streaming programs, with all their properties. */
+/** Class representing the operators in the streaming programs, with all their properties.
+ *  算子在流图中的类以及它们的属性
+ * */
 @Internal
 public class StreamNode {
 

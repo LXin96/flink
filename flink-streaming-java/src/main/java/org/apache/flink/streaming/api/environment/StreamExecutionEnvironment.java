@@ -2190,6 +2190,7 @@ public class StreamExecutionEnvironment implements AutoCloseable {
         try {
             JobClient jobClient = jobClientFuture.get();
             jobListeners.forEach(jobListener -> jobListener.onJobSubmitted(jobClient, null));
+            // TODO>? a little bit unknown
             collectIterators.forEach(iterator -> iterator.setJobClient(jobClient));
             collectIterators.clear();
             return jobClient;
@@ -2221,7 +2222,7 @@ public class StreamExecutionEnvironment implements AutoCloseable {
      * registered {@link Transformation transformations}. Clearing the transformations allows, for
      * example, to not re-execute the same operations when calling {@link #execute()} multiple
      * times.
-     *
+     * 流作业StreamGraph的Getter，带有清除先前注册的Transformation的选项
      * @param clearTransformations Whether or not to clear previously registered transformations
      * @return The stream graph representing the transformations
      */

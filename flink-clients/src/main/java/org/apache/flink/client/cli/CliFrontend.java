@@ -1165,13 +1165,16 @@ public class CliFrontend {
         EnvironmentInformation.logEnvironmentInfo(LOG, "Command Line Client", args);
 
         // 1. find the configuration directory
+        // TODO  获取配置文件的路径
         final String configurationDirectory = getConfigurationDirectoryFromEnv();
 
         // 2. load the global configuration
+        // TODO  加载flink集群的配置文件
         final Configuration configuration =
                 GlobalConfiguration.loadConfiguration(configurationDirectory);
 
         // 3. load the custom command lines
+        // TODO 加载自定义 命令行配置
         final List<CustomCommandLine> customCommandLines =
                 loadCustomCommandLines(configuration, configurationDirectory);
 
@@ -1241,6 +1244,15 @@ public class CliFrontend {
         config.setInteger(RestOptions.PORT, address.getPort());
     }
 
+    /**
+     * 按照顺序：
+     * 1、generic cli
+     * 2、yarn cli
+     * 3、default cli
+     * @param configuration
+     * @param configurationDirectory
+     * @return
+     */
     public static List<CustomCommandLine> loadCustomCommandLines(
             Configuration configuration, String configurationDirectory) {
         List<CustomCommandLine> customCommandLines = new ArrayList<>();

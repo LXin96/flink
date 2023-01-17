@@ -24,7 +24,9 @@ import org.apache.flink.configuration.Configuration;
 
 import java.util.concurrent.CompletableFuture;
 
-/** The entity responsible for executing a {@link Pipeline}, i.e. a user job. */
+/** The entity responsible for executing a {@link Pipeline}, i.e. a user job.
+ *  负责执行pipline的实体
+ * */
 @Internal
 public interface PipelineExecutor {
 

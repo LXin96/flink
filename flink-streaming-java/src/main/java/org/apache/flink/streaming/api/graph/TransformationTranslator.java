@@ -49,7 +49,7 @@ public interface TransformationTranslator<OUT, T extends Transformation<OUT>> {
     /**
      * Translates a given {@link Transformation} to its runtime implementation for STREAMING-style
      * execution.
-     *
+     * 转换一个给定的transformation到一个运行时的流类型转换
      * @param transformation The transformation to be translated.
      * @param context The translation context.
      * @return The ids of the "last" {@link StreamNode StreamNodes} in the transformation graph

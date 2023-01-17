@@ -86,7 +86,7 @@ public enum ClientUtils {
             LOG.info(
                     "Starting program (detached: {})",
                     !configuration.getBoolean(DeploymentOptions.ATTACHED));
-
+            // TODO 在执行StreamContextEnvironment.getExecutionEnvironment 之前先把 上下文设置进StreamContextEnvironment
             ContextEnvironment.setAsContext(
                     executorServiceLoader,
                     configuration,

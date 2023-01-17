@@ -541,6 +541,7 @@ public abstract class Transformation<T> {
      * This is, for example, used when determining whether a feedback edge of an iteration actually
      * has the iteration head as a predecessor.
      *
+     * 返回所有的可传递的父节点转换，比如，这用于决定是否一个反馈边的迭代器确实有迭代头作为前置节点
      * @return The list of transitive predecessors.
      */
     public abstract List<Transformation<?>> getTransitivePredecessors();
