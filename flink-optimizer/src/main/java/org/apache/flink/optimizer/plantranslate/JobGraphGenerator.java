@@ -111,13 +111,18 @@ import static org.apache.flink.util.Preconditions.checkState;
  * org.apache.flink.runtime.jobgraph.JobGraph}. The translation is not strictly a one-to-one,
  * because some nodes from the OptimizedPlan are collapsed into one job vertex.
  *
+ * 这个组件翻译优化器的结果OptimizedPlan到JobGraph。这个翻译不是严格的一对一的，因为一些OptimizedPlan的节点是
+ * 结合在一个job vertex中
+ *
  * <p>This translation does not make any decisions or assumptions. All degrees-of-freedom in the
  * execution of the job are made by the Optimizer, so that this translation becomes a deterministic
  * mapping.
- *
+ * 这个翻译不做任何的决定或者假设。所有的job的自由度都是由优化器决定，所以这个翻译成为了一个决定性映射
  * <p>The basic method of operation is a top down traversal over the plan graph. On the way down,
  * job vertices are created for the plan nodes, on the way back up, the nodes connect their
  * predecessors.
+ *
+ * 操作的基本方法是对平面图进行自顶向下的遍历。在向下的过程中，为计划节点创建作业顶点，在向上的过程中，这些节点连接它们的前一个节点。
  */
 public class JobGraphGenerator implements Visitor<PlanNode> {
 
