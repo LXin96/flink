@@ -48,6 +48,8 @@ import java.util.function.Supplier;
 /**
  * Component which starts a {@link Dispatcher}, {@link ResourceManager} and {@link
  * WebMonitorEndpoint} in the same process.
+ *
+ * 在相同进程中启动Dispatcher resourceManager 以及 webMonitorEndpoint
  */
 public class DispatcherResourceManagerComponent implements AutoCloseableAsync {
 

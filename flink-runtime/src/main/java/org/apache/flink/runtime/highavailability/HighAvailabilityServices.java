@@ -36,15 +36,24 @@ import java.util.concurrent.Executor;
  * The HighAvailabilityServices give access to all services needed for a highly-available setup. In
  * particular, the services provide access to highly available storage and registries, as well as
  * distributed counters and leader election.
+ * 高可用性服务提供对高可用性设置所需的所有服务的访问。特别是，这些服务提供对高可用存储和注册表的访问，
+ * 以及对分布式计数器和领导者选举的访问。
  *
  * <ul>
  *   <li>ResourceManager leader election and leader retrieval
+ *       ResourceManager leader的选举和获取leader
  *   <li>JobManager leader election and leader retrieval
+ *       JobManager leader的选举和获取leader
  *   <li>Persistence for checkpoint metadata
+ *       检查点元数据的持久化
  *   <li>Registering the latest completed checkpoint(s)
+ *       注册最新完成的checkpoint
  *   <li>Persistence for the BLOB store
+ *       BLOB 存储的持久化
  *   <li>Registry that marks a job's status
+ *       标记作业状态的注册表
  *   <li>Naming of RPC endpoints
+ *       RPC 端点的命名
  * </ul>
  */
 public interface HighAvailabilityServices

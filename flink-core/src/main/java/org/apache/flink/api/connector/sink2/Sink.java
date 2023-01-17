@@ -37,6 +37,8 @@ import java.util.function.Consumer;
  * data on checkpoint to achieve at-least-once consistency. Sinks with additional requirements
  * should implement {@link StatefulSink} or {@link TwoPhaseCommittingSink}.
  *
+ * 开发一个sink基础的接口。 一个基本的sink是无状态的并且可以在进行checkpoint的时候flush data实现至少一次的持久。
+ * sinks的额外的要求应该在statefulSink或者是twoPhaseCommittingSink中实现
  * <p>The {@link Sink} needs to be serializable. All configuration should be validated eagerly. The
  * respective sink writers are transient and will only be created in the subtasks on the
  * taskmanagers.

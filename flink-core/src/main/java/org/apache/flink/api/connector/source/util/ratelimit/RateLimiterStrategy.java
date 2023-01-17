@@ -33,12 +33,18 @@ public interface RateLimiterStrategy extends Serializable {
      * Creates a {@link RateLimiter} that lets records through with rate proportional to the
      * parallelism. This method will be called once per source subtask. The cumulative rate over all
      * rate limiters for a source must not exceed the rate limit configured for the strategy.
+     *
+     * TODO：
+     * 创建一个RateLimiter让记录与并行度成比例的通过。这个方法会在每个source的subtask上调用一次，单个source上所有的
+     * 限速的累计值不能超过策略配置的限速值
+     *
      */
     RateLimiter createRateLimiter(int parallelism);
 
     /**
      * Creates a {@code RateLimiterStrategy} that is limiting the number of records per second.
      *
+     * 创建一个RateLimiterStrategy限制每秒记录的数量
      * @param recordsPerSecond The number of records produced per second. The actual number of
      *     produced records is subject to rounding due to dividing the number of produced records
      *     among the parallel instances.

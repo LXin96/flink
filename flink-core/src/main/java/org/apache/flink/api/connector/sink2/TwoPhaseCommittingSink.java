@@ -30,10 +30,15 @@ import java.util.Collection;
  * consists of a {@link SinkWriter} that performs the precommits and a {@link Committer} that
  * actually commits the data. To facilitate the separation the {@link SinkWriter} creates
  * <i>committables</i> on checkpoint or end of input and the sends it to the {@link Committer}.
+ * 一个使用两阶段提交支持明确一次语义的sink，这个sink由SinkWriter进行预提交以及committer实际进行提交数据
+ * 为了方便分离，sinkWriter在检查点或输入结束处创建，并将其发送给Committer
  *
  * <p>The {@link TwoPhaseCommittingSink} needs to be serializable. All configuration should be
  * validated eagerly. The respective sink writers and committers are transient and will only be
  * created in the subtasks on the taskmanagers.
+ *
+ *  两阶段提交的sink需要被序列化，所有的配置文件都应该及早的进行验证。 对应的sink writer和committer都是transient
+ *  并且只会在taskmanager的subtasks上创建
  *
  * @param <InputT> The type of the sink's input
  * @param <CommT> The type of the committables.

@@ -40,7 +40,7 @@ public class RateLimitedSourceReader<E, SplitT extends SourceSplit>
 
     /**
      * Instantiates a new rate-limited source reader.
-     *
+     * TODO 实例化一个新的限速source reader
      * @param sourceReader The actual source reader.
      * @param rateLimiter The rate limiter.
      */
