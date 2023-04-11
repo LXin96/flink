@@ -385,7 +385,7 @@ public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErro
                             configuration,
                             Reference.borrowed(workingDirectory.unwrap().getBlobStorageDirectory()),
                             haServices.createBlobStore());
-            blobServer.start();
+            blobServer.start(); //TODO thread.start 不阻塞么？
             configuration.setString(BlobServerOptions.PORT, String.valueOf(blobServer.getPort()));
             heartbeatServices = createHeartbeatServices(configuration);
             delegationTokenManager =

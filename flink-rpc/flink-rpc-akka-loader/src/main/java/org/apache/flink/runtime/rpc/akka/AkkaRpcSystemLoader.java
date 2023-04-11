@@ -41,6 +41,10 @@ import java.util.UUID;
  * <p>This loader expects the flink-rpc-akka jar to be accessible via {@link
  * ClassLoader#getResource(String)}. It will extract the jar into a temporary directory and create a
  * new {@link SubmoduleClassLoader} to load the rpc system from that jar.
+ *
+ * TODO：AkkaRpcSystemLoader 加载akkarpc系统
+ * TODO：这个加载器期望flink-rpc-akka jar能够通过ClassLoader#getResource加载访问。
+ * TODO：这个加载器会抽取flink-rpc-akka这个jar到一个临时目录，并且创建一个新的 #SubmoduleClassLoader 从flink-rpc-akka jar中加载rpc系统
  */
 public class AkkaRpcSystemLoader implements RpcSystemLoader {
 
