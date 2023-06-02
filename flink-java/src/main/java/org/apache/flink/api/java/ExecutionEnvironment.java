@@ -1219,6 +1219,9 @@ public class ExecutionEnvironment {
      * execution environment, as returned by {@link #createLocalEnvironment()}. If the program is
      * invoked from within the command line client to be submitted to a cluster, this method returns
      * the execution environment of this cluster.
+     * 创建一个执行环境，表示程序当前执行的上下文。 如果程序是独立调用的，则此方法返回本地执行环境，
+     * 如 {@link #createLocalEnvironment()} 所返回的那样。 如果从命令行客户端调用程序提交到一个集群，
+     * 这个方法返回这个集群的执行环境。
      *
      * @return The execution environment of the context in which the program is executed.
      */

@@ -174,7 +174,7 @@ public class DefaultDispatcherResourceManagerComponentFactory
                             fatalErrorHandler);
 
             log.debug("Starting Dispatcher REST endpoint.");
-            webMonitorEndpoint.start();
+            webMonitorEndpoint.start();  // TODO 启动rest web的服务
 
             final String hostname = RpcUtils.getHostname(rpcService);
 
@@ -202,7 +202,7 @@ public class DefaultDispatcherResourceManagerComponentFactory
                     new DispatcherOperationCaches(
                             configuration.get(RestOptions.ASYNC_OPERATION_STORE_DURATION));
 
-            final PartialDispatcherServices partialDispatcherServices =
+            final PartialDispatcherServices partialDispatcherServices = // TODO： 主要是为了检查 在dispatcher 完全初始化之前 所有的必要的组件已经初始化完毕
                     new PartialDispatcherServices(
                             configuration,
                             highAvailabilityServices,

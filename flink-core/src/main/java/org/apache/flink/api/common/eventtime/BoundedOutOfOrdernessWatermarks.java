@@ -32,6 +32,9 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
  *
  * <p>The watermarks are generated periodically. The delay introduced by this watermark strategy is
  * the periodic interval length, plus the out-of-orderness bound.
+ *
+ * TODO:WatermarkGenerator用于记录乱序的情况，但您可以设置事件乱序程度的上限。乱序边界B意味着一旦遇到时间戳为T的事件，
+ * TODO 就不会再发生比{@code T - B}更早的事件。水印周期性生成。该水印策略引入的延迟是周期间隔长度加上无序边界。
  */
 @Public
 public class BoundedOutOfOrdernessWatermarks<T> implements WatermarkGenerator<T> {

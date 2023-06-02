@@ -36,6 +36,10 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
  * An entity responsible for submitting an application for execution in "Application Mode", i.e. on
  * a dedicated cluster that is created on application submission and torn down upon application
  * termination, and with its {@code main()} executed on the cluster, rather than the client.
+ *
+ * 负责在“application模式”下提交应用程序执行的实体，即在应用程序提交时创建并在应用程序终止时在专用集群拆除，
+ * 并且其{@code main()}在集群上执行，而不是在客户端上执行。
+ *
  */
 @Internal
 public class ApplicationClusterDeployer implements ApplicationDeployer {

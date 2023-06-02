@@ -111,7 +111,7 @@ public class HighAvailabilityServicesUtils {
 
         switch (highAvailabilityMode) {
             case NONE:
-                final Tuple2<String, Integer> hostnamePort = getJobManagerAddress(configuration);
+                final Tuple2<String, Integer> hostnamePort = getJobManagerAddress(configuration); // TODO: 获取 <url :  port>
 
                 final String resourceManagerRpcUrl =
                         rpcSystemUtils.getRpcUrl(

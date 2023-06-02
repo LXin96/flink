@@ -218,10 +218,10 @@ public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErro
         LOG.info("Starting {}.", getClass().getSimpleName());
 
         try {
-            FlinkSecurityManager.setFromConfiguration(configuration);
+            FlinkSecurityManager.setFromConfiguration(configuration);// TODO: configuration 从前端传入后配置
             PluginManager pluginManager =
-                    PluginUtils.createPluginManagerFromRootFolder(configuration);
-            configureFileSystems(configuration, pluginManager);
+                    PluginUtils.createPluginManagerFromRootFolder(configuration); //TODO 插件文件夹
+            configureFileSystems(configuration, pluginManager); // TODO 加载文件系统
 
             SecurityContext securityContext = installSecurityContext(configuration);
 
@@ -279,7 +279,7 @@ public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErro
     private void runCluster(Configuration configuration, PluginManager pluginManager)
             throws Exception {
         synchronized (lock) {
-            initializeServices(configuration, pluginManager);
+            initializeServices(configuration, pluginManager); // TODO： 初始化服务完毕
 
             // write host information into configuration
             configuration.setString(JobManagerOptions.ADDRESS, commonRpcService.getAddress());
@@ -287,9 +287,9 @@ public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErro
 
             final DispatcherResourceManagerComponentFactory
                     dispatcherResourceManagerComponentFactory =
-                            createDispatcherResourceManagerComponentFactory(configuration);
+                            createDispatcherResourceManagerComponentFactory(configuration); // TODO：创建dispatcher resource  rest-server的工厂
 
-            clusterComponent =
+            clusterComponent =  // TODO：经过这一步骤之后 所有的dispatcher 需要的组件都将初始化完毕
                     dispatcherResourceManagerComponentFactory.create(
                             configuration,
                             resourceId.unwrap(),
@@ -337,7 +337,7 @@ public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErro
         synchronized (lock) {
             resourceId =
                     configuration
-                            .getOptional(JobManagerOptions.JOB_MANAGER_RESOURCE_ID)
+                            .getOptional(JobManagerOptions.JOB_MANAGER_RESOURCE_ID) // list 类型
                             .map(
                                     value ->
                                             DeterminismEnvelope.deterministicValue(
@@ -350,17 +350,18 @@ public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErro
             LOG.debug(
                     "Initialize cluster entrypoint {} with resource id {}.",
                     getClass().getSimpleName(),
-                    resourceId);
+                    resourceId);  // TODO 初始化 entrypoint的resource id
 
+            // TODO： 生成 jm_resourceId/tmp_io/
             workingDirectory =
                     ClusterEntrypointUtils.createJobManagerWorkingDirectory(
                             configuration, resourceId);
 
             LOG.info("Using working directory: {}.", workingDirectory);
 
-            rpcSystem = RpcSystem.load(configuration);
+            rpcSystem = RpcSystem.load(configuration); // TODO 需要了解akka是如何join准备的
 
-            commonRpcService =
+            commonRpcService = // TODO 在启动commonRpcService的时候 启动所有的节点
                     RpcUtils.createRemoteRpcService(
                             rpcSystem,
                             configuration,
@@ -369,13 +370,14 @@ public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErro
                             configuration.getString(JobManagerOptions.BIND_HOST),
                             configuration.getOptional(JobManagerOptions.RPC_BIND_PORT));
 
+            // TODO： 启动JMX 服务端口
             JMXService.startInstance(configuration.getString(JMXServerOptions.JMX_SERVER_PORT));
 
             // update the configuration used to create the high availability services
             configuration.setString(JobManagerOptions.ADDRESS, commonRpcService.getAddress());
             configuration.setInteger(JobManagerOptions.PORT, commonRpcService.getPort());
 
-            ioExecutor =
+            ioExecutor = // TODO 当前机器启动的进程
                     Executors.newFixedThreadPool(
                             ClusterEntrypointUtils.getPoolSize(configuration),
                             new ExecutorThreadFactory("cluster-io"));
@@ -385,7 +387,7 @@ public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErro
                             configuration,
                             Reference.borrowed(workingDirectory.unwrap().getBlobStorageDirectory()),
                             haServices.createBlobStore());
-            blobServer.start();
+            blobServer.start(); // TODO 文件服务已经启动好了
             configuration.setString(BlobServerOptions.PORT, String.valueOf(blobServer.getPort()));
             heartbeatServices = createHeartbeatServices(configuration);
             delegationTokenManager =
@@ -410,6 +412,7 @@ public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErro
                             ConfigurationUtils.getSystemResourceMetricsProbingInterval(
                                     configuration));
 
+            // TODO： 创建可序列化的 执行图 存储
             executionGraphInfoStore =
                     createSerializableExecutionGraphStore(
                             configuration, commonRpcService.getScheduledExecutor());

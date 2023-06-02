@@ -29,6 +29,8 @@ import java.io.Serializable;
  * <p>By default, the joins follows strictly the semantics of an "inner join" in SQL. the semantics
  * are those of an "inner join", meaning that elements are filtered out if their key is not
  * contained in the other data set.
+ * TODO：默认情况下，连接严格遵循SQL中“内部连接”的语义。语义是“内连接”的语义，这意味着如果元素的键不包含在另一个数据集中，
+ * TODO：元素将被过滤掉。
  *
  * <p>The basic syntax for using Join on two data sets is as follows:
  *

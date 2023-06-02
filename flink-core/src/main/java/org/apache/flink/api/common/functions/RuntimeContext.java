@@ -50,7 +50,7 @@ import java.util.Set;
  * parallel instance of the function will have a context through which it can access static
  * contextual information (such as the current parallelism) and other constructs like accumulators
  * and broadcast variables.
- *
+ * TODO：RuntimeContext包含有关执行函数的上下文的信息。函数的每个并行实例都有一个上下文，通过这个上下文，它可以访问静态上下文信息(比如当前并行度)和其他结构，比如累加器和广播变量。
  * <p>A function can, during runtime, obtain the RuntimeContext via a call to {@link
  * AbstractRichFunction#getRuntimeContext()}.
  */
@@ -65,14 +65,14 @@ public interface RuntimeContext {
 
     /**
      * Returns the name of the task in which the UDF runs, as assigned during plan construction.
-     *
+     * TODO： 返回在计划构建期间分配的运行UDF的任务的名称。
      * @return The name of the task in which the UDF runs.
      */
     String getTaskName();
 
     /**
      * Returns the metric group for this parallel subtask.
-     *
+     * TODO：返回此并行子任务的metric group
      * @return The metric group for this parallel subtask.
      */
     @PublicEvolving
@@ -80,7 +80,7 @@ public interface RuntimeContext {
 
     /**
      * Gets the parallelism with which the parallel task runs.
-     *
+     * TODO： 获取并行任务运行时使用的并行度。
      * @return The parallelism with which the parallel task runs.
      */
     int getNumberOfParallelSubtasks();
@@ -103,7 +103,7 @@ public interface RuntimeContext {
 
     /**
      * Gets the attempt number of this parallel subtask. First attempt is numbered 0.
-     *
+     * TODO： 获取此并行子任务的尝试次数。第一次尝试编号为0。
      * @return Attempt number of the subtask.
      */
     int getAttemptNumber();
@@ -136,7 +136,8 @@ public interface RuntimeContext {
      *
      * <p>The release hook is executed just before the user code class loader is being released.
      * Registration only happens if no hook has been registered under this name already.
-     *
+     * TODO：用户类代码类加载器释放之前执行
+     * TODO：钩子的名称不能重复
      * @param releaseHookName name of the release hook.
      * @param releaseHook release hook which is executed just before the user code class loader is
      *     being released
@@ -232,7 +233,7 @@ public interface RuntimeContext {
     /**
      * Returns the {@link DistributedCache} to get the local temporary file copies of files
      * otherwise not locally accessible.
-     *
+     * TODO： 获取文件的本地临时文件副本
      * @return The distributed cache of the worker executing this instance.
      */
     DistributedCache getDistributedCache();

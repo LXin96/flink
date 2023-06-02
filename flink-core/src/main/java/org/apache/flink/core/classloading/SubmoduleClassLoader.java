@@ -33,6 +33,7 @@ import java.util.Collections;
  *
  * <p>All other classes can only be loaded if they are either available in the submodule jar or the
  * bootstrap/app classloader (i.e., provided by the JDK).
+ * TODO: 所有其他类只有在子模块jar或bootstrap/app类加载器(即由JDK提供)中可用时才能加载。
  */
 public class SubmoduleClassLoader extends ComponentClassLoader {
     public SubmoduleClassLoader(URL[] classpath, ClassLoader parentClassLoader) {

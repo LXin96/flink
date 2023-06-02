@@ -46,11 +46,13 @@ public class StandaloneSessionClusterEntrypoint extends SessionClusterEntrypoint
         SignalHandler.register(LOG);
         JvmShutdownSafeguard.installAsShutdownHook(LOG);
 
+        // TODO: 集群环境的运行配置
         final EntrypointClusterConfiguration entrypointClusterConfiguration =
                 ClusterEntrypointUtils.parseParametersOrExit(
                         args,
                         new EntrypointClusterConfigurationParserFactory(),
                         StandaloneSessionClusterEntrypoint.class);
+        // TODO: 加载集群的运行参数
         Configuration configuration = loadConfiguration(entrypointClusterConfiguration);
 
         StandaloneSessionClusterEntrypoint entrypoint =

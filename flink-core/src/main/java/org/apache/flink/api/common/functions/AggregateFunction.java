@@ -34,18 +34,28 @@ import java.io.Serializable;
  * </ul>
  *
  * <p>The {@code AggregateFunction}'s intermediate aggregate (in-progress aggregation state) is
- * called the <i>accumulator</i>. Values are added to the accumulator, and final aggregates are
- * obtained by finalizing the accumulator state. This supports aggregation functions where the
+ * called the <i>accumulator</i>.
+ * TODO：AggregateFunction的中间聚合（正在聚合的状态）成为：累加器
+ *
+ * Values are added to the accumulator, and final aggregates are
+ * obtained by finalizing the accumulator state.
+ * TODO:将值添加到累加器中，最终的聚合结果将从最终的累加器状态中获得
+ *
+ * This supports aggregation functions where the
  * intermediate state needs to be different than the aggregated values and the final result type,
  * such as for example <i>average</i> (which typically keeps a count and sum). Merging intermediate
  * aggregates (partial aggregates) means merging the accumulators.
+ * TODO 合并中间结果意味着合并累加器
  *
  * <p>The AggregationFunction itself is stateless. To allow a single AggregationFunction instance to
  * maintain multiple aggregates (such as one aggregate per key), the AggregationFunction creates a
  * new accumulator whenever a new aggregation is started.
+ * TODO：AggregationFunction本身是无状态的，为了允许单个AggregationFunction实例维护多个聚合（例如每个键一个聚合）,
+ * TODO: 每当启动新的聚合时，AggregationFunction都会创建一个新的累加器
  *
  * <p>Aggregation functions must be {@link Serializable} because they are sent around between
  * distributed processes during distributed execution.
+ * 聚合函数必须是{@link Serializable}，因为它们是在分布式执行期间在分布式进程之间发送的。
  *
  * <h1>Example: Average and Weighted Average</h1>
  *

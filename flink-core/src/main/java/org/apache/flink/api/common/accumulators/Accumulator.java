@@ -28,6 +28,8 @@ import java.io.Serializable;
  * instances of the accumulator are later merged. merged by the system at the end of the job. The
  * result can be obtained from the result of a job execution, or from the web runtime monitor.
  *
+ * TODO：累加器是从算子和用户函数收集分布式统计数据或者聚合数据，每一个并行实例创建和更新自己的累加对象，不同的并行
+ * TODO：实例在之后会被聚合，在job结束的时候被系统聚合。结果可以被job 执行完毕或者在web的 runtime monitor获取
  * <p>The accumulators are inspired by the Hadoop/MapReduce counters.
  *
  * <p>The type added to the accumulator might differ from the type returned. This is the case e.g.

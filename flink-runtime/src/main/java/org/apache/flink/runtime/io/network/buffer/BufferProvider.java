@@ -71,6 +71,7 @@ public interface BufferProvider extends AvailabilityProvider {
      *
      * <p>If there is no buffer available, the call will block until one becomes available again or
      * the buffer provider has been destroyed.
+     * TODO: 如果没有可用的buffer, 这个方法调用将会被阻塞直到获取一个可用的block，或者 buffer provider 被摧毁
      *
      * @param targetChannel to which the request will be accounted to.
      */

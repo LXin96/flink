@@ -41,6 +41,7 @@ import java.util.concurrent.Executor;
 
 /**
  * ZooKeeper HA services that only use a single leader election per process.
+ * TODO: ZooKeeper HA服务，每个进程只使用一个leader选举。
  *
  * <pre>
  * /flink

@@ -177,7 +177,7 @@ public abstract class RestServerEndpoint implements RestService {
             final Router router = new Router();
             final CompletableFuture<String> restAddressFuture = new CompletableFuture<>();
 
-            handlers = initializeHandlers(restAddressFuture);
+            handlers = initializeHandlers(restAddressFuture); // TODO: 初始化所有的handlers
 
             /* sort the handlers such that they are ordered the following:
              * /jobs

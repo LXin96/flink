@@ -44,6 +44,7 @@ import java.util.stream.Collectors;
  * DistributedCache provides static methods to write the registered cache files into job
  * configuration or decode them from job configuration. It also provides user access to the file
  * locally.
+ * TODO：DistributedCache 提供静态方法将注册的缓存文件写入作业配置或从作业配置中解码它们。它还允许用户访问本地文件。
  */
 @Public
 public class DistributedCache {
@@ -55,6 +56,10 @@ public class DistributedCache {
      * job-submission process. After registration through the API {@code filePath} denotes the
      * original directory. After the upload to the cluster (which includes zipping the directory),
      * {@code filePath} denotes the (server-side) copy of the zip.
+     *
+     *
+     * TODO：根据我们在作业提交过程中所处的位置，条目对于本地目录具有不同的语义。通过 API 注册后，
+     * TODO：{@code filePath} 表示原始目录。上传到集群后（包括压缩目录），{@code filePath} 表示 zip 的（服务器端）副本。
      */
     public static class DistributedCacheEntry implements Serializable {
 

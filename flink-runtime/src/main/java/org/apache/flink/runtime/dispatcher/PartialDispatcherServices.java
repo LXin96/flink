@@ -34,6 +34,8 @@ import java.util.concurrent.Executor;
 /**
  * Partial {@link DispatcherServices} services container which needs to be completed before being
  * given to the {@link Dispatcher}.
+ *
+ * TODO：部分{@link DispatcherServices}服务容器，需要在给{@link Dispatcher}之前完成。
  */
 public class PartialDispatcherServices {
 

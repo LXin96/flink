@@ -182,6 +182,7 @@ public final class ClusterEntrypointUtils {
     @VisibleForTesting
     public static File generateJobManagerWorkingDirectoryFile(
             Configuration configuration, ResourceID resourceId) {
+        // 生成 jm_resourceId/tmp_io/
         return generateWorkingDirectoryFile(
                 configuration,
                 Optional.of(ClusterOptions.JOB_MANAGER_PROCESS_WORKING_DIR_BASE),

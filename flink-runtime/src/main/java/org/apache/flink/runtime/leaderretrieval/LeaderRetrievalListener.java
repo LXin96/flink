@@ -25,11 +25,15 @@ import java.util.UUID;
 /**
  * Classes which want to be notified about a changing leader by the {@link LeaderRetrievalService}
  * have to implement this interface.
+ *
+ * TODO: 想要通过{@link LeaderRetrievalService}获得领导者变更通知的类必须实现这个接口。
  */
 public interface LeaderRetrievalListener {
 
     /**
      * This method is called by the {@link LeaderRetrievalService} when a new leader is elected.
+     *
+     * TODO: 这个方法被{@link LeaderRetrievalService}调用，当一个新的领导者被选举出来。
      *
      * <p>If both arguments are null then it signals that leadership was revoked without a new
      * leader having been elected.

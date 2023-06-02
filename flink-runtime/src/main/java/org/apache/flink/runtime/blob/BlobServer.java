@@ -146,6 +146,7 @@ public class BlobServer extends Thread
 
     /**
      * Instantiates a new BLOB server and binds it to a free network port.
+     * TODO： 实例化 一个新的BLOB server 并且将其绑定到一个端口
      *
      * @param config Configuration to be used to instantiate the BlobServer
      * @param storageDir storage directory for the blobs

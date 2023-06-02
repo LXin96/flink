@@ -30,15 +30,17 @@ import java.util.Date;
  * with timestamp <i>T</i> indicates that the stream's event time has progressed to time <i>T</i>.
  *
  * <p>Watermarks are created at the sources and propagate through the streams and operators.
- *
+ * TODO:水印在source处创建，并通过流和operator传播。
  * <p>In some cases a watermark is only a heuristic, meaning some events with a lower timestamp may
  * still follow. In that case, it is up to the logic of the operators to decide what to do with the
  * "late events". Operators can for example ignore these late events, route them to a different
  * stream, or send update to their previously emitted results.
- *
+ * TODO:在某些情况下，水印只是一种启发，这意味着一些时间戳较低的事件可能仍然会发生。
+ * TODO:在这种情况下，由操作符的逻辑来决定如何处理“延迟事件”。例如，操作符可以忽略这些后期事件，
+ * TODO:将它们路由到不同的流，或者对先前发出的结果发送更新。
  * <p>When a source reaches the end of the input, it emits a final watermark with timestamp {@code
  * Long.MAX_VALUE}, indicating the "end of time".
- *
+ * TODO:当一个source到达输入的结束时，它会发出一个时间戳为{@code Long的最终水印。MAX_VALUE}，表示“结束时间”。
  * <p>Note: A stream's time starts with a watermark of {@code Long.MIN_VALUE}. That means that all
  * records in the stream with a timestamp of {@code Long.MIN_VALUE} are immediately late.
  */
