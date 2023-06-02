@@ -96,6 +96,7 @@ public interface ReaderOutput<T> extends SourceOutput<T> {
     /**
      * Creates a {@code SourceOutput} for a specific Source Split. Use these outputs if you want to
      * run split-local logic, like watermark generation.
+     * TODO 为特定的Source Split创建一个{@code SourceOutput}。如果您想运行局部分割逻辑(如水印生成)，可以使用这些输出
      *
      * <p>If a split-local output was already created for this split-ID, the method will return that
      * instance, so that only one split-local output exists per split-ID.

@@ -55,6 +55,9 @@ public final class ClusterEntrypointUtils {
      * ParserResultFactory}. The method will call {@code System.exit} and print the usage
      * information to stdout in case of a parsing error.
      *
+     * TODO：使用传递的{@code ParserResultFactory}的参数定义解析传递的字符串数组。该方法将调用(System.exit)
+     * TODO: 并且将使用信息打印到标准输出，以防止出现解析错误
+     *
      * @param args The String array that shall be parsed.
      * @param parserResultFactory The {@code ParserResultFactory} that collects the parameter
      *     parsing instructions.
@@ -228,6 +231,7 @@ public final class ClusterEntrypointUtils {
     /**
      * Creates the working directory for the JobManager process. This method ensures that the
      * working diretory exists.
+     * TODO：为jobmanager 进程创建工作目录，这个方法保证了工作目录存在
      *
      * @param configuration to extract the required settings from
      * @param envelopedResourceId identifying the TaskManager process

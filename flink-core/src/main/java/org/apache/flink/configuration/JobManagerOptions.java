@@ -638,6 +638,7 @@ public class JobManagerOptions {
 
     /**
      * The JobManager's ResourceID. If not configured, the ResourceID will be generated randomly.
+     * TODO：jobmanager的resourceId，如果没有配置，那么resourceID将会随机产生
      */
     @Documentation.Section(Documentation.Sections.ALL_JOB_MANAGER)
     public static final ConfigOption<String> JOB_MANAGER_RESOURCE_ID =

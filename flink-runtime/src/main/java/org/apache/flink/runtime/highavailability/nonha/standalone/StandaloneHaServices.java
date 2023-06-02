@@ -49,7 +49,7 @@ public class StandaloneHaServices extends AbstractNonHaServices {
 
     /**
      * Creates a new services class for the fix pre-defined leaders.
-     *
+     * TODO：为预先定义好的leader 创建一个新的服务的对象
      * @param resourceManagerAddress The fix address of the ResourceManager
      * @param clusterRestEndpointAddress
      */

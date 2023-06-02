@@ -25,7 +25,9 @@ import org.apache.flink.runtime.util.EnvironmentInformation;
 import org.apache.flink.runtime.util.JvmShutdownSafeguard;
 import org.apache.flink.runtime.util.SignalHandler;
 
-/** Entry point for the standalone session cluster. */
+/** Entry point for the standalone session cluster.
+ *  TODO 单机session集群入口
+ * */
 public class StandaloneSessionClusterEntrypoint extends SessionClusterEntrypoint {
 
     public StandaloneSessionClusterEntrypoint(Configuration configuration) {

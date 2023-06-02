@@ -95,7 +95,7 @@ public class JvmShutdownSafeguard extends Thread {
     /**
      * Installs the safeguard shutdown hook. The maximum time that the JVM is allowed to spend on
      * shutdown before being killed is five seconds.
-     *
+     * TODO：安装安全关闭的钩子，jvm在关闭之前允许花费的最长时间是5秒
      * @param logger The logger to log errors to.
      */
     public static void installAsShutdownHook(Logger logger) {
