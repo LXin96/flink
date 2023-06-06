@@ -29,6 +29,8 @@ public interface JobMasterServiceFactory {
 
     /**
      * Creates a new {@link JobMasterService} for the given leaderSessionId and onCompletionActions.
+     * TODO：
+     *   创建一个新的{@link JobMasterService} 对于给定的leaderSessionId 以及 onCompletionActions
      *
      * @param leaderSessionId leaderSessionId for which to create a {@link JobMasterService}
      * @param onCompletionActions onCompletionActions which are given to the created {@link

@@ -90,11 +90,11 @@ public enum ClientUtils {
             ContextEnvironment.setAsContext(
                     executorServiceLoader,
                     configuration,
-                    userCodeClassLoader,
+                    userCodeClassLoader, // TODO 因为在代码中 getExecutionEnvironment ～= 在这里设置并且在线程上下文中设置ContextEnvironment 设置集群的参数
                     enforceSingleJobExecution,
                     suppressSysout);
 
-            StreamContextEnvironment.setAsContext(
+            StreamContextEnvironment.setAsContext( // TODO 这要的涉及了 用户代码的配置 如果有优先按照 客户端代码的配置然后和集群的配置做合并
                     executorServiceLoader,
                     configuration,
                     userCodeClassLoader,

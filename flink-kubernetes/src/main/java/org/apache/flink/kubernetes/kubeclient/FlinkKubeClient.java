@@ -38,6 +38,8 @@ import java.util.function.Function;
  * ResourceManager. To avoid potentially blocking the execution of RpcEndpoint's main thread, these
  * interfaces {@link #createTaskManagerPod(KubernetesPod)}, {@link #stopPod(String)} should be
  * implemented asynchronously.
+ * TODO: 与kubernetes交互的客户端，这个接口会同时在client和resourceManager进行调用。为了防止潜在阻碍RpcEndpoint的
+ * TODO： main线程，那么createTaskManagerPod和stopPod应该实现为异步的
  */
 public interface FlinkKubeClient extends AutoCloseable {
 

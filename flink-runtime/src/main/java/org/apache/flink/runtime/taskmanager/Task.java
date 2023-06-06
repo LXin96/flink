@@ -124,16 +124,25 @@ import static org.apache.flink.util.Preconditions.checkState;
  * to consume input data, produce its results (intermediate result partitions) and communicate with
  * the JobManager.
  *
+ * TODO: Task 表示 TaskManager 上并行子任务的一次执行。
+ * TODO: 一个 Task 包装了一个 Flink 运算符（可能是一个用户函数）并运行它，
+ * TODO: 提供所有必要的服务，例如使用输入数据、产生结果（中间结果分区）并与 JobManager 通信。
+ *
  * <p>The Flink operators (implemented as subclasses of {@link TaskInvokable} have only data
  * readers, writers, and certain event callbacks. The task connects those to the network stack and
  * actor messages, and tracks the state of the execution and handles exceptions.
  *
+ * TODO: flink operators 实现了TaskInvokable 只有数据读取器，写入器和某些事件的回调。任务将他们连接到网络堆栈和参与者消息，并跟踪执行状态和处理异常
  * <p>Tasks have no knowledge about how they relate to other tasks, or whether they are the first
  * attempt to execute the task, or a repeated attempt. All of that is only known to the JobManager.
  * All the task knows are its own runnable code, the task's configuration, and the IDs of the
  * intermediate results to consume and produce (if any).
+ * TODO：任务不知道它们与其他任务的关系，或者它们是第一次尝试执行任务，还是重复尝试。所有这些都只有 JobManager 知道。
+ * TODO：任务所知道的只是它自己的可运行代码、任务的配置以及要使用和生成的中间结果的 ID（如果有的话）。
  *
  * <p>Each Task is run by one dedicated thread.
+ *
+ * TODO 每个任务会运行在单独的线程中
  */
 public class Task
         implements Runnable, TaskSlotPayload, TaskActions, PartitionProducerStateProvider {
@@ -291,6 +300,8 @@ public class Task
     /**
      * This class loader should be set as the context class loader for threads that may dynamically
      * load user code.
+     *
+     * TODO:这个类加载器应该被设置为线程上下文类加载器这样可以动态的加载用户的代码
      */
     private UserCodeClassLoader userCodeClassLoader;
 
@@ -1064,7 +1075,7 @@ public class Task
 
     /**
      * Try to transition the execution state from the current state to the new state.
-     *
+     * TODO: 尝试将执行状态从当前状态转换到新状态
      * @param currentState of the execution
      * @param newState of the execution
      * @param cause of the transition change or null

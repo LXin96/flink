@@ -38,6 +38,7 @@ public interface PermanentBlobService extends Closeable {
     /**
      * Returns the path to a local copy of the file associated with the provided job ID and blob
      * key.
+     * TODO： 返回与所提供的作业ID和blob键关联的文件的本地副本的路径。
      *
      * @param jobId ID of the job this blob belongs to
      * @param key BLOB key associated with the requested file

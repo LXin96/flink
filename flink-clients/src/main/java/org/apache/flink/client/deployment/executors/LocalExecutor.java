@@ -99,7 +99,7 @@ public class LocalExecutor implements PipelineExecutor {
             final int numTaskManagers =
                     configuration.getInteger(ConfigConstants.LOCAL_NUMBER_TASK_MANAGER, 1);
 
-            plan.setDefaultParallelism(slotsPerTaskManager * numTaskManagers);
+            plan.setDefaultParallelism(slotsPerTaskManager * numTaskManagers);  //TODO 默认并行度就是 slot_num * per_slot
         }
 
         return PipelineExecutorUtils.getJobGraph(pipeline, configuration, userCodeClassloader);

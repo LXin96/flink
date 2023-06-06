@@ -55,14 +55,20 @@ import java.util.function.Supplier;
  * <p>The responsibility of this component is to manage the leadership of the {@link
  * JobMasterServiceProcess}. This means that the runner will create an instance of the process when
  * it obtains the leadership. The process is stopped once the leadership is revoked.
- *
+ * TODO：
+ *     这个组件的职责是管理{@link JobMasterServiceProcess}的领导权。
+ *     这意味着当运行程序获得领导时，这个组件将创建流程的实例。
+ *     一旦领导层被撤销，这个过程就会停止。
  * <p>This component only accepts signals (job result completion, initialization failure) as long as
  * it is running and as long as the signals are coming from the current leader process. This ensures
  * that only the current leader can affect this component.
- *
+ * TODO：
+ *      这个组件只接受信号（job 结果完成，初始化失败）只要它在运行并且只要信号来自当前的领导进程，这就保证了只有当前的
+ *      leader可以影响这个组件
  * <p>All leadership operations are serialized. This means that granting the leadership has to
  * complete before the leadership can be revoked and vice versa.
- *
+ * TODO：
+ *      所有leadership的操作都是序列化的。这意味着授予领导权必须在领导权被撤销之前完成，反之亦然。
  * <p>The {@link #resultFuture} can be completed with the following values: * *
  *
  * <ul>

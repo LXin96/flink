@@ -113,6 +113,7 @@ public class StreamContextEnvironment extends StreamExecutionEnvironment {
         this.programConfigWildcards = programConfigWildcards;
     }
 
+    //TODO 最终的调用结果是 用户的代码的编写和集群的运行就拆分出来了
     @Override
     public JobExecutionResult execute(StreamGraph streamGraph) throws Exception {
         final JobClient jobClient = executeAsync(streamGraph);

@@ -31,6 +31,8 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
 /**
  * Unique identifier for the attempt to execute a tasks. Multiple attempts happen in cases of
  * failures and recovery.
+ *
+ * TODO：尝试执行任务的唯一标识符。在失败和恢复的情况下会发生多次尝试。
  */
 public class ExecutionAttemptID implements java.io.Serializable {
 
@@ -39,6 +41,8 @@ public class ExecutionAttemptID implements java.io.Serializable {
     // Represent the number of bytes occupied when writes ExecutionAttemptID to the ByteBuf.
     // It is the sum of one ExecutionGraphID type(executionGraphId), one ExecutionVertexID
     // type(executionVertexId) and one int type(attemptNumber).
+    // TODO 表示将ExecutionAttemptID写入ByteBuf时所占用的字节数。
+    // TODO 它是一个ExecutionVertexID类型(ExecutionVertexID)和一个int类型(attemptNumber)的和。
     private static final int BYTE_BUF_LEN = ExecutionGraphID.SIZE + ExecutionVertexID.SIZE + 4;
 
     private final ExecutionGraphID executionGraphId;

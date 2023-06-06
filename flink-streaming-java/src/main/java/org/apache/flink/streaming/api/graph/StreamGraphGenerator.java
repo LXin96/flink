@@ -105,6 +105,7 @@ import static org.apache.flink.util.Preconditions.checkState;
 
 /**
  * A generator that generates a {@link StreamGraph} from a graph of {@link Transformation}s.
+ * 从{@link Transformation}的图生成{@link StreamGraph}的生成器。
  *
  * <p>This traverses the tree of {@code Transformations} starting from the sinks. At each
  * transformation we recursively transform the inputs, then create a node in the {@code StreamGraph}
@@ -317,7 +318,7 @@ public class StreamGraphGenerator {
         alreadyTransformed = new IdentityHashMap<>();
 
         for (Transformation<?> transformation : transformations) {
-            transform(transformation);
+            transform(transformation);  // TODO alreadyTransformed<transform, transformedIds>;
         }
 
         streamGraph.setSlotSharingGroupResource(slotSharingGroupResources);
@@ -506,7 +507,7 @@ public class StreamGraphGenerator {
      * <p>This checks whether we already transformed it and exits early in that case. If not it
      * delegates to one of the transformation specific methods.
      *
-     * 这个方法会检查是否已经转换了这个transformation，如果没有，它将委托给指定的转换方法
+     * TODO：这个方法会检查是否已经转换了这个transformation，如果没有，它将委托给指定的转换方法
      */
     private Collection<Integer> transform(Transformation<?> transform) {
         if (alreadyTransformed.containsKey(transform)) {

@@ -62,7 +62,7 @@ public enum JobMasterServiceLeadershipRunnerFactory implements JobManagerRunnerF
         checkArgument(jobGraph.getNumberOfVertices() > 0, "The given job is empty");
 
         final JobMasterConfiguration jobMasterConfiguration =
-                JobMasterConfiguration.fromConfiguration(configuration);
+                JobMasterConfiguration.fromConfiguration(configuration);    //TODO 初始化JobMaster的配置
 
         final JobResultStore jobResultStore = highAvailabilityServices.getJobResultStore();
 
