@@ -52,6 +52,8 @@ public interface ShuffleMaster<T extends ShuffleDescriptor> extends AutoCloseabl
      * ID, job configuration. It enables ShuffleMaster to notify JobMaster about lost result
      * partitions, so that JobMaster can identify and reproduce unavailable partitions earlier.
      *
+     * TODO：
+     *
      * @param context the corresponding shuffle context of the target job.
      */
     default void registerJob(JobShuffleContext context) {}

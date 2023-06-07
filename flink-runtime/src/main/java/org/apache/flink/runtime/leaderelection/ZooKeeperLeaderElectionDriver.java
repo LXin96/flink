@@ -42,6 +42,8 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
  * {@link LeaderElectionDriver} implementation for Zookeeper. The leading JobManager is elected
  * using ZooKeeper. The current leader's address as well as its leader session ID is published via
  * ZooKeeper.
+ * TODO:
+ *  {@link LeaderElectionDriver}
  *
  * @deprecated in favour of {@link ZooKeeperMultipleComponentLeaderElectionDriver}
  */
