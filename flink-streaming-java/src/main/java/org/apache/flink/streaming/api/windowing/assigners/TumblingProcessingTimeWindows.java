@@ -118,6 +118,8 @@ public class TumblingProcessingTimeWindows extends WindowAssigner<Object, TimeWi
      * The parameter of offset is {@code Time.hours(-8))} since UTC+08:00 is 8 hours earlier than
      * UTC time.
      *
+     * TODO：  Time标识窗口的大小
+     *         offset时区的偏移量
      * @param size The size of the generated windows.
      * @param offset The offset which window start would be shifted by.
      * @return The time policy.

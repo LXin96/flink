@@ -27,9 +27,12 @@ import java.io.Serializable;
  * Runtime identifier of a consumed {@link
  * org.apache.flink.runtime.executiongraph.IntermediateResult}.
  *
+ * TODO：执行图中间结果的运行时标志符号
  * <p>At runtime the {@link org.apache.flink.runtime.jobgraph.IntermediateDataSetID} is not enough
  * to uniquely identify an input gate. It needs to be associated with the consuming task as well to
  * ensure correct tracking of gates in shuffle implementation.
+ * TODO：在运行时，IntermediateDataSetID 不足以单独标识一个input gate。它需要和消费的任务进行关联保证在正确在shuffle环境中
+ * 正确的追踪
  */
 public class InputGateID implements Serializable {
 

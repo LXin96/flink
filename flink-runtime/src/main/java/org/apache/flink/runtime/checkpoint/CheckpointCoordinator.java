@@ -97,6 +97,9 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
  * triggers the checkpoint by sending the messages to the relevant tasks and collects the checkpoint
  * acknowledgements. It also collects and maintains the overview of the state handles reported by
  * the tasks that acknowledge the checkpoint.
+ *
+ * TODO：checkpoint coordinator 协调算子的快照和状态，通过发送消息到对应的task中并且手机checkpoint的响应。它同样收集
+ *       并且维护确认检查点的任务所报告的状态句柄的概述
  */
 public class CheckpointCoordinator {
 

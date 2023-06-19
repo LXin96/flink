@@ -41,15 +41,25 @@ import static org.apache.flink.util.concurrent.FutureUtils.assertNoException;
 /**
  * A buffer pool used to manage a number of {@link Buffer} instances from the {@link
  * NetworkBufferPool}.
+ * TODO：
+ *      一个缓冲池，用于管理来自{@link NetworkBufferPool}的一些buffer实例。
  *
  * <p>Buffer requests are mediated to the network buffer pool to ensure dead-lock free operation of
  * the network stack by limiting the number of buffers per local buffer pool. It also implements the
  * default mechanism for buffer recycling, which ensures that every buffer is ultimately returned to
  * the network buffer pool.
  *
+ * TODO：
+ *    buffer请求被路由到network buffer pool，通过限制每个local buffer pool来保证网络堆栈的无死锁操作。它还实现了
+ *    缓冲区回收的默认机制，确保每个缓冲区最终都返回到网络缓冲池
+ *
  * <p>The size of this pool can be dynamically changed at runtime ({@link #setNumBuffers(int)}. It
  * will then lazily return the required number of buffers to the {@link NetworkBufferPool} to match
  * its new size.
+ *
+ * TODO：
+ *    local buffer 的大小在运行时是动态变化的，它会延迟归还对应数量的buffer到NetworkBufferPool，匹配它的新的值
+ *
  *
  * <p>Availability is defined as returning a segment on a subsequent {@link #requestBuffer()}/
  * {@link #requestBufferBuilder()} and heaving a non-blocking {@link

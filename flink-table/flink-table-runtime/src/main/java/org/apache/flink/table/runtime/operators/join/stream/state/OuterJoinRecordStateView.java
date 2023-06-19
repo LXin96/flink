@@ -25,6 +25,8 @@ import org.apache.flink.table.data.RowData;
  * A {@link OuterJoinRecordStateView} is an extension to {@link JoinRecordStateView}. The {@link
  * OuterJoinRecordStateView} is used to store records for the outer input side of the Join, e.g. the
  * left side of left join, the both side of full join.
+ * TODO：{@link OuterJoinRecordStateView}是{@link JoinRecordStateView}的扩展。
+ *       {@link OuterJoinRecordStateView}用于存储连接的外部输入侧的记录
  *
  * <p>The additional information we should store with the record is the number of associations which
  * is the number of records associated this record with other side. This is an important information

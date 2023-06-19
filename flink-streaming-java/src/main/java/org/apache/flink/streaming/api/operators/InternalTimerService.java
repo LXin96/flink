@@ -50,6 +50,7 @@ public interface InternalTimerService<N> {
     /**
      * Registers a timer to be fired when event time watermark passes the given time. The namespace
      * you pass here will be provided when the timer fires.
+     * TODO：注册一个计时器，当事件时间水印超过给定时间时触发。在这里传递的名称空间将在计时器触发时提供
      */
     void registerEventTimeTimer(N namespace, long time);
 

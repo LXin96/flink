@@ -214,7 +214,7 @@ public class BinaryHashTable extends BaseHybridHashTable {
     }
 
     /** End build phase. */
-    public void endBuild() throws IOException {
+    public void  endBuild() throws IOException {
         // finalize the partitions
         int buildWriteBuffers = 0;
         for (BinaryHashPartition p : this.partitionsBeingBuilt) {

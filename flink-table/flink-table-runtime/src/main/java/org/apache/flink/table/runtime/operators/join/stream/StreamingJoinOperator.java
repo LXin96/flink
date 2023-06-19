@@ -38,8 +38,10 @@ public class StreamingJoinOperator extends AbstractStreamingJoinOperator {
     private static final long serialVersionUID = -376944622236540545L;
 
     // whether left side is outer side, e.g. left is outer but right is not when LEFT OUTER JOIN
+    // TODO:在left outer join的时候 left side 是 outer side，right side 不是
     private final boolean leftIsOuter;
     // whether right side is outer side, e.g. right is outer but left is not when RIGHT OUTER JOIN
+    // TODO：在right outer join的时候 right side是outer side，left side 不是
     private final boolean rightIsOuter;
 
     private transient JoinedRowData outRow;
@@ -146,23 +148,36 @@ public class StreamingJoinOperator extends AbstractStreamingJoinOperator {
      * FlinkChangelogModeInferenceProgram.SatisfyModifyKindSetTraitVisitor}.
      *
      * <pre>
+     * TODO 如果输入的记录是append
      * if input record is accumulate
+     * TODO 如果输入一侧是外
      * |  if input side is outer
+     * TODO 如果在另一侧没有匹配的行，那么发送 +I[record, null],并且设置 state.add(record,0) 个人理解应该是 [记录，匹配行数]
      * |  |  if there is no matched rows on the other side, send +I[record+null], state.add(record, 0)
+     * TODO 如果在另一侧存在匹配行数
      * |  |  if there are matched rows on the other side
-     * |  |  | if other side is outer
+     * TODO 如果另一侧匹配的行数为0 那么发送 -D[null, other]
      * |  |  | |  if the matched num in the matched rows == 0, send -D[null+other]
+     * TODO  如果匹配数在匹配行数中大于0 跳过 （个人理解应该是匹配过了，所以跳过）
      * |  |  | |  if the matched num in the matched rows > 0, skip
+     * TODO otherState.update(other,old+1)
      * |  |  | |  otherState.update(other, old + 1)
      * |  |  | endif
+     * TODO: 发送 +I[record,other] 更新左流状态 [record,other.size]
      * |  |  | send +I[record+other]s, state.add(record, other.size)
      * |  |  endif
      * |  endif
+     * TODO: 如果输入侧不是外
      * |  if input side not outer
+     * TODO：将record添加进左流状态
      * |  |  state.add(record)
+     * TODO：如果在另一侧没有匹配到，则跳过
      * |  |  if there is no matched rows on the other side, skip
+     * TODO： 如果在另一条流存在匹配的行数
      * |  |  if there are matched rows on the other side
+     * TODO： 如果另一条流是外连接
      * |  |  |  if other side is outer
+     * TODO： 如果匹配行数中等于0，那么发送 -D[null,other]
      * |  |  |  |  if the matched num in the matched rows == 0, send -D[null+other]
      * |  |  |  |  if the matched num in the matched rows > 0, skip
      * |  |  |  |  otherState.update(other, old + 1)
@@ -203,7 +218,7 @@ public class StreamingJoinOperator extends AbstractStreamingJoinOperator {
             throws Exception {
         boolean inputIsOuter = inputIsLeft ? leftIsOuter : rightIsOuter;
         boolean otherIsOuter = inputIsLeft ? rightIsOuter : leftIsOuter;
-        boolean isAccumulateMsg = RowDataUtil.isAccumulateMsg(input);
+        boolean isAccumulateMsg = RowDataUtil.isAccumulateMsg(input); // TODO  kind == RowKind.INSERT || kind == RowKind.UPDATE_AFTER;
         RowKind inputRowKind = input.getRowKind();
         input.setRowKind(RowKind.INSERT); // erase RowKind for later state updating
 

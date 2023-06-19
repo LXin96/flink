@@ -61,6 +61,8 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
  *
  * <p>Regular joins are the most generic type of join in which any new records or changes to either
  * side of the join input are visible and are affecting the whole join result.
+ *
+ * TODO：regular joins 是最通用的连接类型，其中任何新记录或对连接输入的任何一侧的改变都是可见的，并且会影响整个连接的结果
  */
 @ExecNodeMetadata(
         name = "stream-exec-join",

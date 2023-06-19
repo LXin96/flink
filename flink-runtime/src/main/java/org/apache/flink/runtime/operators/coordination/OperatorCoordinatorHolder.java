@@ -50,6 +50,8 @@ import static org.apache.flink.util.Preconditions.checkState;
  * The {@code OperatorCoordinatorHolder} holds the {@link OperatorCoordinator} and manages all its
  * interactions with the remaining components. It provides the context and is responsible for
  * checkpointing and exactly once semantics.
+ * TODO：{@code OperatorCoordinatorHolder}保存{@link OperatorCoordinator}并管理它与其他组件的所有交互。
+ * TODO：它提供上下文，并负责检查点和一次语义。
  *
  * <h3>Exactly-one Semantics</h3>
  *
@@ -63,14 +65,19 @@ import static org.apache.flink.util.Preconditions.checkState;
  * <ul>
  *   <li>Events pass through a special channel, the {@link SubtaskGatewayImpl}. If we are not
  *       currently triggering a checkpoint, then events simply pass through.
+ *       TODO：事件通过一个特殊的通道传递，即{@link SubtaskGatewayImpl}。如果我们当前没有触发检查点，那么事件就会直接通过。
  *   <li>With the completion of the checkpoint future for the coordinator, this subtask gateway is
  *       closed. Events coming after that are held back (buffered), because they belong to the epoch
  *       after the checkpoint.
+ *       TODO：随着coordinator未来完成checkpoint，这个子任务的gateway会被关闭。之后来的事件会被缓存到buffer中，
+ *       TODO：因为它属于之后的checkpoint
  *   <li>Once all coordinators in the job have completed the checkpoint, the barriers to the sources
  *       are injected. If a coordinator receives an {@link AcknowledgeCheckpointEvent} from one of
  *       its subtasks, which denotes that the subtask has received the checkpoint barrier and
  *       completed checkpoint, the coordinator reopens the corresponding subtask gateway and sends
  *       out buffered events.
+ *       TODO：一旦job中所有的coordinators都完成了checkpoint，那么barrier就会注入到source中。如果一个coordinator收到了
+ *       TODO：来自它的子任务确认事件，那么意味着这个子任务已经收到了checkpoint barrier并且完成了checkpoint
  *   <li>If a task fails in the meantime, the events are dropped from the gateways. From the
  *       coordinator's perspective, these events are lost, because they were sent to a failed
  *       subtask after it's latest complete checkpoint.
@@ -80,16 +87,19 @@ import static org.apache.flink.util.Preconditions.checkState;
  * transported strictly in order. Events being sent from the coordinator after the checkpoint
  * barrier was injected must not overtake the checkpoint barrier. This is currently guaranteed by
  * Flink's RPC mechanism.
- *
+ * TODO:一个关键的假设是，从调度器发送到任务的所有事件都严格按顺序传输。在注入检查点屏障后从coordinator发送的事件
+ * TODO：不得超过检查点屏障。目前Flink的RPC机制保证了这一点。
  * <h3>Concurrency and Threading Model</h3>
  *
  * <p>This component runs strictly in the Scheduler's main-thread-executor. All calls "from the
  * outside" are either already in the main-thread-executor (when coming from Scheduler) or put into
  * the main-thread-executor (when coming from the CheckpointCoordinator). We rely on the executor to
  * preserve strict order of the calls.
- *
+ * TODO：该组件严格运行在Scheduler的主线程执行器中。所有“来自外部”的调用要么已经在主线程执行器中(当来自Scheduler时)，
+ * TODO：要么被放入主线程执行器中(当来自CheckpointCoordinator时)。我们依靠executor来保持调用的严格顺序。
  * <p>Actions from the coordinator to the "outside world" (like completing a checkpoint and sending
  * an event) are also enqueued back into the scheduler main-thread executor, strictly in order.
+ * TODO：从coordinator到“外部世界”的操作(如完成检查点和发送事件)也严格按顺序排在调度器主线程执行器的队列中。
  */
 public class OperatorCoordinatorHolder
         implements OperatorCoordinatorCheckpointContext, AutoCloseable {
@@ -106,6 +116,8 @@ public class OperatorCoordinatorHolder
      * gateway during checkpoint. This map should only be read or modified when concurrent execution
      * attempt is disabled. Note that concurrent execution attempt is currently guaranteed to be
      * disabled when checkpoint is enabled.
+     * TODO：
+     *
      */
     private final Map<Integer, SubtaskGatewayImpl> subtaskGatewayMap;
 

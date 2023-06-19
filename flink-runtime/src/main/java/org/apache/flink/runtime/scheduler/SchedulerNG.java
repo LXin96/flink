@@ -64,6 +64,7 @@ import java.util.concurrent.CompletableFuture;
  *
  * <p>Instances are created via {@link SchedulerNGFactory}, and receive a {@link JobGraph} when
  * instantiated.
+ * TODO：Instances are created via {@link SchedulerNGFactory}, and receive a {@link JobGraph} when instantiated.
  *
  * <p>Implementations can expect that methods will not be invoked concurrently. In fact, all
  * invocations will originate from a thread in the {@link ComponentMainThreadExecutor}.

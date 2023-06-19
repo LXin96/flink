@@ -155,6 +155,8 @@ import static org.apache.flink.util.concurrent.FutureUtils.assertNoException;
  * specialized for the type of the head operator: one-input and two-input tasks, as well as for
  * sources, iteration heads and iteration tails.
  *
+ * TODO：任务链包含一个“头”操作符和多个链式操作符。StreamTask专门用于头操作符的类型:单输入和双输入任务，以及源、迭代头和迭代尾。
+ *
  * <p>The Task class deals with the setup of the streams read by the head operator, and the streams
  * produced by the operators at the ends of the operator chain. Note that the chain may fork and
  * thus have multiple ends.

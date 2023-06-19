@@ -35,6 +35,8 @@ import java.util.Map;
 /**
  * Utility for keeping track of merging {@link Window Windows} when using a {@link
  * MergingWindowAssigner} in a {@link WindowOperator}.
+ * TODO：
+ *  当在{@link WindowOperator}中使用{@link MergingWindowAssigner}时，跟踪合并{@link Window Windows}的实用程序。
  *
  * <p>When merging windows, we keep one of the original windows as the state window, i.e. the window
  * that is used as namespace to store the window elements. Elements from the state windows of merged

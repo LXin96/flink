@@ -124,8 +124,8 @@ import static org.apache.flink.util.Preconditions.checkState;
  * to consume input data, produce its results (intermediate result partitions) and communicate with
  * the JobManager.
  *
- * TODO: Task 表示 TaskManager 上并行子任务的一次执行。
- * TODO: 一个 Task 包装了一个 Flink 运算符（可能是一个用户函数）并运行它，
+ * TODO: Task 表示 TaskManager 上并行子任务的一个执行。
+ * TODO: 一个 Task 包装了一个 Flink 算子（可能是一个用户函数）并运行它，
  * TODO: 提供所有必要的服务，例如使用输入数据、产生结果（中间结果分区）并与 JobManager 通信。
  *
  * <p>The Flink operators (implemented as subclasses of {@link TaskInvokable} have only data
@@ -137,7 +137,7 @@ import static org.apache.flink.util.Preconditions.checkState;
  * attempt to execute the task, or a repeated attempt. All of that is only known to the JobManager.
  * All the task knows are its own runnable code, the task's configuration, and the IDs of the
  * intermediate results to consume and produce (if any).
- * TODO：任务不知道它们与其他任务的关系，或者它们是第一次尝试执行任务，还是重复尝试。所有这些都只有 JobManager 知道。
+ * TODO：任务不知道它们与其他任务的关系，也不知道它们是否是第一次执行任务，还是重复执行。所有这些都只有 JobManager 知道。
  * TODO：任务所知道的只是它自己的可运行代码、任务的配置以及要使用和生成的中间结果的 ID（如果有的话）。
  *
  * <p>Each Task is run by one dedicated thread.

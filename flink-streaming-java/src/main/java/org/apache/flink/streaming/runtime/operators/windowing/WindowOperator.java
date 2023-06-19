@@ -407,6 +407,7 @@ public class WindowOperator<K, IN, ACC, OUT, W extends Window>
                 triggerContext.window = window;
 
                 TriggerResult triggerResult = triggerContext.onElement(element);
+                // TODO：给当前element 设置 触发器
 
                 if (triggerResult.isFire()) {
                     ACC contents = windowState.get();

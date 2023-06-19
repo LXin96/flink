@@ -55,6 +55,8 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
 /**
  * The NetworkBufferPool is a fixed size pool of {@link MemorySegment} instances for the network
  * stack.
+ * TODO:
+ *    NetworkBufferPool是一个固定大小的MemorySegment用于网络栈
  *
  * <p>The NetworkBufferPool creates {@link LocalBufferPool}s from which the individual tasks draw
  * the buffers for the network data transfer. When new local buffer pools are created, the
