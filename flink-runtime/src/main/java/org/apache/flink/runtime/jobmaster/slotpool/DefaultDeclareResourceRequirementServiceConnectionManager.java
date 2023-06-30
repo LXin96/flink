@@ -40,6 +40,7 @@ import java.util.concurrent.CompletableFuture;
  * <p>This connection manager is responsible for sending new resource requirements to the connected
  * service. In case of faults it continues retrying to send the latest resource requirements to the
  * service with an exponential backoff strategy.
+ * TODO：此连接管理器负责将新的资源需求发送到所连接的服务。在出现故障的情况下，它继续尝试用指数回退策略将最新的资源需求发送给服务。
  */
 class DefaultDeclareResourceRequirementServiceConnectionManager
         extends AbstractServiceConnectionManager<

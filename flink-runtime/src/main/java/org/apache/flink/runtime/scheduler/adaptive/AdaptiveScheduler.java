@@ -136,12 +136,16 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 /**
+ *
+ * 自适应调度器
  * A {@link SchedulerNG} implementation that uses the declarative resource management and
  * automatically adapts the parallelism in case not enough resource could be acquired to run at the
  * configured parallelism, as described in FLIP-160.
- *
+ * TODO：一个{@link SchedulerNG}实现，它使用声明性资源管理，并在无法获得足够的资源以配置的并行度运行时自动调整并行度，
+ * TODO：如FLIP-160所述。
  * <p>This scheduler only supports jobs with streaming semantics, i.e., all vertices are connected
  * via pipelined data-exchanges.
+ * TODO：这个调度器只支持具有流语义的作业，也就是说，所有的顶点都通过流水线数据交换连接起来。
  *
  * <p>The implementation is spread over multiple {@link State} classes that control which RPCs are
  * allowed in a given state and what state transitions are possible (see the FLIP for an overview).

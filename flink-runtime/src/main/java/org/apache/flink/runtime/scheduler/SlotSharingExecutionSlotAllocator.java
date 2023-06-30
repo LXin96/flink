@@ -129,18 +129,24 @@ class SlotSharingExecutionSlotAllocator implements ExecutionSlotAllocator {
 
     /**
      * Creates logical {@link SlotExecutionVertexAssignment}s from physical shared slots.
+     * TODO：从物理共享插槽创建逻辑{@link SlotExecutionVertexAssignment}。
      *
      * <p>The allocation has the following steps:
      *
      * <ol>
      *   <li>Map the executions to {@link ExecutionSlotSharingGroup}s using {@link
      *       SlotSharingStrategy}
+     *       TODO：使用{@link SlotSharingStrategy}将Executions映射到{@link ExecutionSlotSharingGroup}
+     *
      *   <li>Check which {@link ExecutionSlotSharingGroup}s already have shared slot
      *   <li>For all involved {@link ExecutionSlotSharingGroup}s which do not have a shared slot
      *       yet:
      *   <li>Create a {@link SlotProfile} future using {@link SharedSlotProfileRetriever} and then
      *   <li>Allocate a physical slot from the {@link PhysicalSlotProvider}
+     *   TODO：使用{@link SharedSlotProfileRetriever}创建{@link SlotProfile} future，
+     *   TODO: 然后从{@link PhysicalSlotProvider}分配一个物理插槽
      *   <li>Create a shared slot based on the returned physical slot futures
+     *   TODO: 基于返回的物理槽位创建共享槽位
      *   <li>Allocate logical slot futures for the executions from all corresponding shared slots.
      *   <li>If a physical slot request fails, associated logical slot requests are canceled within
      *       the shared slot

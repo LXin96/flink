@@ -28,6 +28,7 @@ public interface SlotAllocator {
 
     /**
      * Calculates the total resources required for scheduling the given vertices.
+     * TODO：计算调度给定顶点所需的总资源
      *
      * @param vertices vertices to schedule
      * @return required resources
